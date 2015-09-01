@@ -4,10 +4,10 @@ https://github.com/elbereth/EasyDash-PHP
 
 Tips appreciated: Xbon36F261wXDL4p1CEZAX28t8U4ayR9uu
 
-A simple class for making calls to Darkcoin's API using PHP.
+A simple class for making calls to Dash's RPC API using PHP.
 
 ## Getting Started:
-1. Include easydarkcoin.php into your PHP script:
+1. Include easydash.php into your PHP script:
 
 	`require_once('easydash.php');`
 2. Initialize Dash connection/object:
