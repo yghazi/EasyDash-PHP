@@ -1,4 +1,4 @@
-# Changelog for EasyDash-PHP
+# EasyDash-PHP
 By Alexandre (aka elbereth) Devilliers
 https://github.com/elbereth/EasyDash-PHP
 
