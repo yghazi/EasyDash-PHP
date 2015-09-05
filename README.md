@@ -12,11 +12,11 @@ A simple class for making calls to Dash's RPC API using PHP.
 	`require_once('easydash.php');`
 2. Initialize Dash connection/object:
 
-	`$dash = new Dash('username','password');`
+	`$dash = new /elbereth/EasyDash('username','password');`
 
 	Optionally, you can specify a host, port. Default is HTTP on localhost port 9998.
 
-	`$dash = new Dash('username','password','localhost','9998');`
+	`$dash = new /elbereth/EasyDash('username','password','localhost','9998');`
 
 	If you wish to make an SSL connection you can set an optional CA certificate or leave blank
 	`$dash->setSSL('/full/path/to/mycertificate.cert');`
