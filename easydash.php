@@ -35,10 +35,10 @@ THE SOFTWARE.
 ====================
 
 // Initialize Dash connection/object
-$dash = new /elbereth/EasyDash('username','password');
+$dash = new \elbereth\EasyDash('username','password');
 
 // Optionally, you can specify a host and port.
-$dash = new /elbereth/EasyDash('username','password','host','port');
+$dash = new \elbereth\EasyDash('username','password','host','port');
 // Defaults are:
 //	host = localhost
 //	port = 9998
