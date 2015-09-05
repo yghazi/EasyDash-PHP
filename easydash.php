@@ -1,9 +1,9 @@
 <?php
 /*
-EasyDarkcoin-PHP
+EasyDash-PHP
 
-A simple class for making calls to Darkcoin's API using PHP.
-https://github.com/elbereth/EasyDarkcoin-PHP
+A simple class for making calls to Dash's API using PHP.
+https://github.com/elbereth/EasyDash-PHP
 
 Tips appreciated: Xbon36F261wXDL4p1CEZAX28t8U4ayR9uu
 
@@ -34,39 +34,41 @@ THE SOFTWARE.
 
 ====================
 
-// Initialize Darkcoin connection/object
-$darkcoin = new Darkcoin('username','password');
+// Initialize Dash connection/object
+$dash = new /elbereth/EasyDash('username','password');
 
 // Optionally, you can specify a host and port.
-$darkcoin = new Darkcoin('username','password','host','port');
+$dash = new /elbereth/EasyDash('username','password','host','port');
 // Defaults are:
 //	host = localhost
-//	port = 8332
+//	port = 9998
 //	proto = http
 
 // If you wish to make an SSL connection you can set an optional CA certificate or leave blank
 // This will set the protocol to HTTPS and some CURL flags
-$darkcoin->setSSL('/full/path/to/mycertificate.cert');
+$dash->setSSL('/full/path/to/mycertificate.cert');
 
-// Make calls to darkcoind as methods for your object. Responses are returned as an array.
+// Make calls to dashd as methods for your object. Responses are returned as an array.
 // Examples:
-$darkcoin->getinfo();
-$darkcoin->getrawtransaction('0e3e2357e806b6cdb1f70b54c3a3a17b6714ee1f0e68bebb44a74b1efd512098',1);
-$darkcoin->getblock('000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f');
+$dash->getinfo();
+$dash->getrawtransaction('0e3e2357e806b6cdb1f70b54c3a3a17b6714ee1f0e68bebb44a74b1efd512098',1);
+$dash->getblock('000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f');
 
 // The full response (not usually needed) is stored in $this->response while the raw JSON is stored in $this->raw_response
 
 // When a call fails for any reason, it will return FALSE and put the error message in $this->error
 // Example:
-echo $darkcoin->error;
+echo $dash->error;
 
 // The HTTP status code can be found in $this->status and will either be a valid HTTP status code or will be 0 if cURL was unable to connect.
 // Example:
-echo $darkcoin->status;
+echo $dash->status;
 
 */
 
-class Darkcoin {
+namespace elbereth;
+
+class EasyDash {
     // Configuration options
     private $username;
     private $password;
@@ -92,7 +94,7 @@ class Darkcoin {
      * @param string $proto
      * @param string $url
      */
-    function __construct($username, $password, $host = 'localhost', $port = 8332, $url = null) {
+    function __construct($username, $password, $host = 'localhost', $port = 9998, $url = null) {
         $this->username      = $username;
         $this->password      = $password;
         $this->host          = $host;
@@ -173,11 +175,11 @@ class Darkcoin {
         }
 
         if ($this->response['error']) {
-            // If darkcoind returned an error, put that in $this->error
+            // If dashd returned an error, put that in $this->error
             $this->error = $this->response['error']['message'];
         }
         elseif ($this->status != 200) {
-            // If darkcoind didn't return a nice error message, we need to make our own
+            // If dashd didn't return a nice error message, we need to make our own
             switch ($this->status) {
                 case 400:
                     $this->error = 'HTTP_BAD_REQUEST';
