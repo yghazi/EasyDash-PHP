@@ -136,12 +136,14 @@ class EasyDash {
         // Build the cURL session
         $curl    = curl_init("{$this->proto}://{$this->username}:{$this->password}@{$this->host}:{$this->port}/{$this->url}");
         $options = array(
+            CURLOPT_CONNECTTIMEOUT => 30,
             CURLOPT_RETURNTRANSFER => TRUE,
             CURLOPT_FOLLOWLOCATION => TRUE,
             CURLOPT_MAXREDIRS      => 10,
             CURLOPT_HTTPHEADER     => array('Content-type: application/json'),
             CURLOPT_POST           => TRUE,
-            CURLOPT_POSTFIELDS     => $request
+            CURLOPT_POSTFIELDS     => $request,
+            CURLOPT_TIMEOUT        => 60
         );
 
         if ($this->proto == 'https') {
